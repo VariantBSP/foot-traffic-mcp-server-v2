@@ -1429,9 +1429,9 @@ async function runHTTP() {
     await server.connect(transport2);
     await transport2.handleRequest(req, res, req.body);
   });
-  const port = parseInt(process.env.PORT || "3000");
-  app.listen(port, () => {
-    console.error(`Foot Traffic MCP Server running on http://localhost:${port}/mcp`);
+  const port = parseInt(process.env.PORT || "3000", 10);
+  app.listen(port, "0.0.0.0", () => {
+    console.log(`Foot Traffic MCP Server running on port ${port}`);
   });
 }
 var transport = process.env.TRANSPORT || "stdio";
