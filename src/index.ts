@@ -681,11 +681,13 @@ async function runHTTP(): Promise<void> {
     await transport.handleRequest(req, res, req.body);
   });
 
-  const port = parseInt(process.env.PORT || '3000');
-  app.listen(port, () => {
-    console.error(`Foot Traffic MCP Server running on http://localhost:${port}/mcp`);
-  });
+const port = parseInt(process.env.PORT || '3000');
+
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Foot Traffic MCP Server running on port ${port}`);
+});
 }
+
 
 // Main execution
 const transport = process.env.TRANSPORT || 'stdio';
