@@ -21,33 +21,33 @@ export const GET_SITE_INTELLIGENCE_OUTPUT_SCHEMA = {
       required: ['name', 'coordinates']
     },
     business_type: { type: 'string' },
-    poi_density_score: { 
-      type: 'number', 
-      minimum: 0, 
+    poi_density_score: {
+      type: 'number',
+      minimum: 0,
       maximum: 100,
       description: 'Point-of-interest density score from OpenStreetMap data'
     },
-    pedestrian_infrastructure_score: { 
-      type: 'number', 
-      minimum: 0, 
+    pedestrian_infrastructure_score: {
+      type: 'number',
+      minimum: 0,
       maximum: 100,
       description: 'Pedestrian infrastructure quality score based on footways, crosswalks, transit stops'
     },
-    review_velocity_score: { 
-      type: 'number', 
-      minimum: 0, 
+    review_velocity_score: {
+      type: 'number',
+      minimum: 0,
       maximum: 100,
       description: 'Review velocity score indicating commercial activity level'
     },
-    population_density_score: { 
-      type: 'number', 
-      minimum: 0, 
+    population_density_score: {
+      type: 'number',
+      minimum: 0,
       maximum: 100,
       description: 'Population density score from GeoNames data'
     },
-    composite_score: { 
-      type: 'number', 
-      minimum: 0, 
+    composite_score: {
+      type: 'number',
+      minimum: 0,
       maximum: 100,
       description: 'Weighted composite score combining all signals'
     },
@@ -57,8 +57,8 @@ export const GET_SITE_INTELLIGENCE_OUTPUT_SCHEMA = {
         count_250m: { type: 'number', description: 'Competitors within 250 meters' },
         count_500m: { type: 'number', description: 'Competitors within 500 meters' },
         count_1km: { type: 'number', description: 'Competitors within 1 kilometer' },
-        saturation_level: { 
-          type: 'string', 
+        saturation_level: {
+          type: 'string',
           enum: ['low', 'moderate', 'high', 'saturated'],
           description: 'Overall market saturation level'
         },
@@ -84,13 +84,13 @@ export const GET_SITE_INTELLIGENCE_OUTPUT_SCHEMA = {
         morning: { type: 'string', description: 'Morning peak hours (e.g., "8am-10am")' },
         midday: { type: 'string', description: 'Midday peak hours (e.g., "12pm-2pm")' },
         evening: { type: 'string', description: 'Evening peak hours (e.g., "6pm-9pm")' },
-        pattern_type: { 
-          type: 'string', 
+        pattern_type: {
+          type: 'string',
           enum: ['residential', 'commercial', 'entertainment', 'mixed'],
           description: 'Dominant activity pattern type'
         },
-        confidence: { 
-          type: 'string', 
+        confidence: {
+          type: 'string',
           enum: ['high', 'medium', 'low'],
           description: 'Confidence level in pattern inference'
         }
@@ -102,12 +102,12 @@ export const GET_SITE_INTELLIGENCE_OUTPUT_SCHEMA = {
       items: { type: 'string' },
       description: 'List of data sources used in analysis'
     },
-    cached: { 
+    cached: {
       type: 'boolean',
       description: 'Whether data was served from cache'
     },
-    timestamp: { 
-      type: 'string', 
+    timestamp: {
+      type: 'string',
       format: 'date-time',
       description: 'Analysis timestamp in ISO 8601 format'
     }
@@ -135,7 +135,6 @@ export const COMPARE_SITES_OUTPUT_SCHEMA = {
     sites: {
       type: 'array',
       items: {
-        // Same structure as GET_SITE_INTELLIGENCE_OUTPUT_SCHEMA
         type: 'object',
         properties: {
           location: {
@@ -184,11 +183,11 @@ export const COMPARE_SITES_OUTPUT_SCHEMA = {
     recommendation: {
       type: 'object',
       properties: {
-        recommended_site: { 
+        recommended_site: {
           type: 'string',
           description: 'Name of the recommended location'
         },
-        reasoning: { 
+        reasoning: {
           type: 'string',
           description: 'AI-generated reasoning for the recommendation'
         },
@@ -197,7 +196,7 @@ export const COMPARE_SITES_OUTPUT_SCHEMA = {
           items: { type: 'string' },
           description: 'Identified risk factors for the recommended site'
         },
-        suggested_action: { 
+        suggested_action: {
           type: 'string',
           description: 'Next steps recommendation for decision-makers'
         }
@@ -209,7 +208,7 @@ export const COMPARE_SITES_OUTPUT_SCHEMA = {
       items: {
         type: 'object',
         properties: {
-          metric: { 
+          metric: {
             type: 'string',
             description: 'Name of the comparison metric'
           },
@@ -249,26 +248,26 @@ export const GET_AREA_SIGNALS_OUTPUT_SCHEMA = {
     area_profile: {
       type: 'object',
       properties: {
-        poi_density_score: { 
-          type: 'number', 
-          minimum: 0, 
+        poi_density_score: {
+          type: 'number',
+          minimum: 0,
           maximum: 100,
           description: 'Point-of-interest density score'
         },
-        pedestrian_score: { 
-          type: 'number', 
-          minimum: 0, 
+        pedestrian_score: {
+          type: 'number',
+          minimum: 0,
           maximum: 100,
           description: 'Pedestrian infrastructure score'
         },
-        population_score: { 
-          type: 'number', 
-          minimum: 0, 
+        population_score: {
+          type: 'number',
+          minimum: 0,
           maximum: 100,
           description: 'Population density score'
         },
-        commercial_activity: { 
-          type: 'string', 
+        commercial_activity: {
+          type: 'string',
           enum: ['low', 'moderate', 'high', 'very_high'],
           description: 'Overall commercial activity level'
         }
@@ -280,15 +279,15 @@ export const GET_AREA_SIGNALS_OUTPUT_SCHEMA = {
       items: {
         type: 'object',
         properties: {
-          category: { 
+          category: {
             type: 'string',
             description: 'Business category name'
           },
-          count: { 
+          count: {
             type: 'number',
             description: 'Number of POIs in this category'
           },
-          percentage: { 
+          percentage: {
             type: 'number',
             minimum: 0,
             maximum: 100,
@@ -299,8 +298,8 @@ export const GET_AREA_SIGNALS_OUTPUT_SCHEMA = {
       },
       description: 'Top business categories in the area'
     },
-    foot_traffic_potential: { 
-      type: 'string', 
+    foot_traffic_potential: {
+      type: 'string',
       enum: ['low', 'moderate', 'high', 'very_high'],
       description: 'Overall foot traffic potential assessment'
     },
@@ -323,20 +322,20 @@ export const GET_AREA_SIGNALS_OUTPUT_SCHEMA = {
 export const GET_COMPETITOR_DENSITY_OUTPUT_SCHEMA = {
   type: 'object',
   properties: {
-    count_250m: { 
+    count_250m: {
       type: 'number',
       description: 'Number of competitors within 250 meters'
     },
-    count_500m: { 
+    count_500m: {
       type: 'number',
       description: 'Number of competitors within 500 meters'
     },
-    count_1km: { 
+    count_1km: {
       type: 'number',
       description: 'Number of competitors within 1 kilometer'
     },
-    saturation_level: { 
-      type: 'string', 
+    saturation_level: {
+      type: 'string',
       enum: ['low', 'moderate', 'high', 'saturated'],
       description: 'Market saturation level based on 500m radius'
     },
@@ -345,15 +344,15 @@ export const GET_COMPETITOR_DENSITY_OUTPUT_SCHEMA = {
       items: {
         type: 'object',
         properties: {
-          name: { 
+          name: {
             type: 'string',
             description: 'Competitor business name'
           },
-          distance_meters: { 
+          distance_meters: {
             type: 'number',
             description: 'Distance from query location in meters'
           },
-          type: { 
+          type: {
             type: 'string',
             description: 'Business type/category'
           }
@@ -366,13 +365,11 @@ export const GET_COMPETITOR_DENSITY_OUTPUT_SCHEMA = {
   required: ['count_250m', 'count_500m', 'count_1km', 'saturation_level', 'competitors']
 };
 
-
-// Main MCP server entry point
+// ── Imports ─────────────────────────────────────────────────────────────────
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
-import express from 'express';
+import express, { type Request, type Response } from 'express';
 import {
   GetSiteIntelligenceInputSchema,
   CompareSitesInputSchema,
@@ -382,18 +379,78 @@ import {
   compareSites,
   getAreaSignals,
   getCompetitorDensity,
-  GetSiteIntelligenceInput,
-  CompareSitesInput,
-  GetAreaSignalsInput,
-  GetCompetitorDensityInput
+  type GetSiteIntelligenceInput,
+  type CompareSitesInput,
+  type GetAreaSignalsInput,
+  type GetCompetitorDensityInput
 } from './tools/foot-traffic-tools.js';
 
+// ── Logger ───────────────────────────────────────────────────────────────────
 
+const log = {
+  info:  (msg: string, meta?: object) => console.log( `[INFO]  ${msg}`, meta ? JSON.stringify(meta) : ''),
+  warn:  (msg: string, meta?: object) => console.warn( `[WARN]  ${msg}`, meta ? JSON.stringify(meta) : ''),
+  error: (msg: string, meta?: object) => console.error(`[ERROR] ${msg}`, meta ? JSON.stringify(meta) : ''),
+};
 
+// ── Tool manifest (for tools/list) ───────────────────────────────────────────
 
+const TOOLS = [
+  {
+    name: 'get_site_intelligence',
+    description: `Analyze a single location for site selection intelligence using open data signals.
 
+Returns comprehensive foot traffic proxy signals including POI density, pedestrian infrastructure,
+review velocity, population density, competitor saturation, and inferred peak hours. This is the
+core tool for evaluating a single candidate location before lease decisions.`,
+    inputSchema: GetSiteIntelligenceInputSchema,
+  },
+  {
+    name: 'compare_sites',
+    description: `Compare 2-5 locations side-by-side for site selection decisions with AI-generated recommendation.
 
-// Create MCP server instance
+Fetches complete site intelligence for each location and generates a ranked comparison with
+actionable recommendation, reasoning, risk factors, and suggested next steps.`,
+    inputSchema: CompareSitesInputSchema,
+  },
+  {
+    name: 'get_area_signals',
+    description: `Get general foot traffic signal profile for a neighborhood or district for market scoping.
+
+Analyzes a broader area to understand overall commercial activity, dominant business categories,
+and foot traffic potential. Use this for initial market research before narrowing down to specific
+site comparisons.`,
+    inputSchema: GetAreaSignalsInputSchema,
+  },
+  {
+    name: 'get_competitor_density',
+    description: `Analyze competitor density and distribution around a specific location by business type.
+
+Returns detailed competitor count at three radius bands (250m, 500m, 1km) with saturation level
+assessment and list of closest competitors.`,
+    inputSchema: GetCompetitorDensityInputSchema,
+  },
+];
+
+// ── Tool dispatcher ──────────────────────────────────────────────────────────
+
+async function callTool(name: string, args: Record<string, unknown>): Promise<unknown> {
+  switch (name) {
+    case 'get_site_intelligence':
+      return await getSiteIntelligence(args as GetSiteIntelligenceInput);
+    case 'compare_sites':
+      return await compareSites(args as CompareSitesInput);
+    case 'get_area_signals':
+      return await getAreaSignals(args as GetAreaSignalsInput);
+    case 'get_competitor_density':
+      return await getCompetitorDensity(args as GetCompetitorDensityInput);
+    default:
+      throw new Error(`Unknown tool: ${name}`);
+  }
+}
+
+// ── stdio mode ───────────────────────────────────────────────────────────────
+
 const server = new McpServer({
   name: 'foot-traffic-mcp-server',
   version: '1.0.0'
@@ -404,62 +461,8 @@ server.registerTool(
   'get_site_intelligence',
   {
     title: 'Get Site Intelligence',
-    description: `Analyze a single location for site selection intelligence using open data signals.
-
-Returns comprehensive foot traffic proxy signals including POI density, pedestrian infrastructure, 
-review velocity, population density, competitor saturation, and inferred peak hours. This is the 
-core tool for evaluating a single candidate location before lease decisions.
-
-Args:
-  - location (string): Location name or address (e.g., "Lekki Phase 1, Lagos" or "Yaba, Lagos")
-  - business_type (string): Type of business (e.g., "restaurant", "cafe", "retail", "gym")
-  - radius_meters (number): Analysis radius in meters, 100-2000 (default: 500)
-  - response_format ('json' | 'markdown'): Output format (default: 'json')
-
-Returns:
-  Structured site intelligence object with schema:
-  {
-    "location": {
-      "name": string,
-      "coordinates": { "latitude": number, "longitude": number }
-    },
-    "business_type": string,
-    "poi_density_score": number,              // 0-100 score
-    "pedestrian_infrastructure_score": number, // 0-100 score
-    "review_velocity_score": number,           // 0-100 score
-    "population_density_score": number,        // 0-100 score
-    "composite_score": number,                 // 0-100 weighted average
-    "competitor_saturation": {
-      "count_250m": number,
-      "count_500m": number,
-      "count_1km": number,
-      "saturation_level": "low" | "moderate" | "high" | "saturated",
-      "competitors": [{ "name": string, "distance_meters": number, "type": string }]
-    },
-    "inferred_peak_hours": {
-      "morning": string,          // e.g., "8am-10am"
-      "midday": string,           // e.g., "12pm-2pm"
-      "evening": string,          // e.g., "6pm-9pm"
-      "pattern_type": "residential" | "commercial" | "entertainment" | "mixed",
-      "confidence": "high" | "medium" | "low"
-    },
-    "data_sources": string[],
-    "cached": boolean,
-    "timestamp": string
-  }
-
-Examples:
-  - Use when: "Evaluate this location for a coffee shop" -> params with location and business_type="cafe"
-  - Use when: "Is Yaba good for a restaurant?" -> params with location="Yaba, Lagos" and business_type="restaurant"
-  - Don't use when: Comparing multiple locations (use compare_sites instead)
-
-Data Sources:
-  - OpenStreetMap: POI density, pedestrian infrastructure, amenity composition
-  - GeoNames: Population density data
-  - Public transit feeds: Peak hour inference
-  - All data from official APIs within free tier limits, no mobile device tracking`,
+    description: TOOLS[0].description,
     inputSchema: GetSiteIntelligenceInputSchema,
-    
     annotations: {
       readOnlyHint: true,
       destructiveHint: false,
@@ -477,56 +480,8 @@ server.registerTool(
   'compare_sites',
   {
     title: 'Compare Multiple Sites',
-    description: `Compare 2-5 locations side-by-side for site selection decisions with AI-generated recommendation.
-
-Fetches complete site intelligence for each location and generates a ranked comparison with 
-actionable recommendation, reasoning, risk factors, and suggested next steps. This is the primary 
-tool for lease decision support when evaluating multiple candidate locations.
-
-Args:
-  - locations (string[]): Array of 2-5 location names/addresses to compare
-  - business_type (string): Type of business for comparison context
-  - radius_meters (number): Analysis radius in meters, 100-2000 (default: 500)
-  - response_format ('json' | 'markdown'): Output format (default: 'json')
-
-Returns:
-  Site comparison object with schema:
-  {
-    "sites": [
-      // Array of SiteIntelligence objects (see get_site_intelligence for schema)
-      // Sorted by composite_score descending
-    ],
-    "recommendation": {
-      "recommended_site": string,           // Name of top-ranked location
-      "reasoning": string,                  // Why this site wins
-      "risk_factors": string[],             // Identified risks
-      "suggested_action": string            // Next steps recommendation
-    },
-    "comparison_matrix": [
-      {
-        "metric": string,                   // e.g., "Composite Score"
-        "sites": { [siteName]: number }     // Score per site
-      }
-      // Metrics: Composite Score, POI Density, Pedestrian Infrastructure, 
-      //          Population Density, Competitor Saturation
-    ]
-  }
-
-Examples:
-  - Use when: "Compare Lekki Phase 1 vs Yaba for a restaurant" 
-    -> params with locations=["Lekki Phase 1, Lagos", "Yaba, Lagos"], business_type="restaurant"
-  - Use when: "Which location is better: A, B, or C?" 
-    -> params with 3 locations in array
-  - Don't use when: Only analyzing one location (use get_site_intelligence instead)
-
-Output includes:
-  - Full signal breakdown for each site
-  - Side-by-side comparison matrix
-  - AI-generated recommendation with reasoning
-  - Risk factor identification
-  - Suggested action for decision-makers`,
+    description: TOOLS[1].description,
     inputSchema: CompareSitesInputSchema,
-
     annotations: {
       readOnlyHint: true,
       destructiveHint: false,
@@ -544,52 +499,8 @@ server.registerTool(
   'get_area_signals',
   {
     title: 'Get Area Foot Traffic Signals',
-    description: `Get general foot traffic signal profile for a neighborhood or district for market scoping.
-
-Analyzes a broader area to understand overall commercial activity, dominant business categories, 
-and foot traffic potential. Use this for initial market research before narrowing down to specific 
-site comparisons. Returns area-level signals without competitor-specific analysis.
-
-Args:
-  - location (string): Neighborhood or district name
-  - radius_meters (number): Analysis radius in meters, 500-2000 (default: 1000)
-  - response_format ('json' | 'markdown'): Output format (default: 'json')
-
-Returns:
-  Area signals object with schema:
-  {
-    "location": {
-      "name": string,
-      "coordinates": { "latitude": number, "longitude": number }
-    },
-    "area_profile": {
-      "poi_density_score": number,                    // 0-100 score
-      "pedestrian_score": number,                     // 0-100 score
-      "population_score": number,                     // 0-100 score
-      "commercial_activity": "low" | "moderate" | "high" | "very_high"
-    },
-    "dominant_categories": [
-      {
-        "category": string,        // e.g., "restaurant", "shop", "office"
-        "count": number,
-        "percentage": number       // Percentage of total POIs
-      }
-    ],
-    "foot_traffic_potential": "low" | "moderate" | "high" | "very_high",
-    "recommended_business_types": string[]
-  }
-
-Examples:
-  - Use when: "What's the commercial activity like in Victoria Island?"
-  - Use when: "Should I consider opening in this neighborhood?"
-  - Use when: Need to scope multiple districts before detailed site analysis
-  - Don't use when: Ready for specific site evaluation (use get_site_intelligence instead)
-
-Use Case:
-  Start with this tool to identify promising neighborhoods, then use get_site_intelligence 
-  or compare_sites for specific locations within those neighborhoods.`,
+    description: TOOLS[2].description,
     inputSchema: GetAreaSignalsInputSchema,
-   
     annotations: {
       readOnlyHint: true,
       destructiveHint: false,
@@ -607,46 +518,8 @@ server.registerTool(
   'get_competitor_density',
   {
     title: 'Get Competitor Density',
-    description: `Analyze competitor density and distribution around a specific location by business type.
-
-Returns detailed competitor count at three radius bands (250m, 500m, 1km) with saturation level 
-assessment and list of closest competitors. Use this when competitor analysis is the primary 
-concern rather than full site intelligence.
-
-Args:
-  - location (string): Location name or address
-  - business_type (string): Type of business to search for competitors
-  - response_format ('json' | 'markdown'): Output format (default: 'json')
-
-Returns:
-  Competitor density object with schema:
-  {
-    "count_250m": number,                    // Competitors within 250 meters
-    "count_500m": number,                    // Competitors within 500 meters
-    "count_1km": number,                     // Competitors within 1 kilometer
-    "saturation_level": "low" | "moderate" | "high" | "saturated",
-    "competitors": [
-      {
-        "name": string,
-        "distance_meters": number,
-        "type": string                       // Amenity/shop type
-      }
-    ]
-  }
-
-Saturation Levels:
-  - low: ≤3 competitors within 500m
-  - moderate: 4-8 competitors within 500m
-  - high: 9-15 competitors within 500m
-  - saturated: 16+ competitors within 500m
-
-Examples:
-  - Use when: "How many coffee shops are near this location?"
-  - Use when: "Is this area saturated with restaurants?"
-  - Use when: Need just competitor analysis without full site intelligence
-  - Don't use when: Need comprehensive site evaluation (use get_site_intelligence instead)`,
+    description: TOOLS[3].description,
     inputSchema: GetCompetitorDensityInputSchema,
-  
     annotations: {
       readOnlyHint: true,
       destructiveHint: false,
@@ -659,38 +532,110 @@ Examples:
   }
 );
 
-// Run server with stdio transport
 async function runStdio(): Promise<void> {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error('Foot Traffic MCP Server running on stdio');
+  log.info('transport/stdio started');
 }
 
-// Run server with HTTP transport
+// ── HTTP mode (Railway-compatible, stateless JSON-RPC) ───────────────────────
+
 async function runHTTP(): Promise<void> {
   const app = express();
   app.use(express.json());
 
-  app.post('/mcp', async (req, res) => {
-    const transport = new StreamableHTTPServerTransport({
-      sessionIdGenerator: undefined,
-      enableJsonResponse: true
-    });
-    res.on('close', () => transport.close());
-    await server.connect(transport);
-    await transport.handleRequest(req, res, req.body);
+  // Request logger
+  app.use((req, _res, next) => {
+    log.info('request', { method: req.method, path: req.path, mcp_method: req.body?.method });
+    next();
   });
 
-const port = parseInt(process.env.PORT || '3000');
+  app.post('/mcp', async (req: Request, res: Response) => {
+    const { method, id, params } = req.body ?? {};
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Foot Traffic MCP Server running on port ${port}`);
-});
+    if (method === 'initialize') {
+      log.info('initialize');
+      res.json({
+        jsonrpc: '2.0',
+        id,
+        result: {
+          protocolVersion: '2024-11-05',
+          serverInfo: { name: 'foot-traffic-mcp-server', version: '1.0.0' },
+          capabilities: { tools: { listChanged: false } },
+        },
+      });
+      return;
+    }
+
+    if (method === 'notifications/initialized') {
+      log.info('notifications/initialized');
+      res.status(204).end();
+      return;
+    }
+
+    if (method === 'notifications/cancelled') {
+      log.warn('tool/cancelled', { id });
+      res.json({ jsonrpc: '2.0', id, result: {} });
+      return;
+    }
+
+    if (method === 'tools/list') {
+      log.info('tools/list');
+      res.json({ jsonrpc: '2.0', id, result: { tools: TOOLS } });
+      return;
+    }
+
+    if (method === 'tools/call') {
+      const { name, arguments: args = {} } = params ?? {};
+      const t0 = Date.now();
+      log.info('tool/call', { name, location: args.location, business_type: args.business_type });
+
+      try {
+        const result = await callTool(name, args);
+        log.info('tool/ok', { name, ms: Date.now() - t0 });
+        res.json({
+          jsonrpc: '2.0',
+          id,
+          result: {
+            content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+            structuredContent: result,
+          },
+        });
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        log.error('tool/err', { name, ms: Date.now() - t0, message });
+        res.json({
+          jsonrpc: '2.0',
+          id,
+          result: {
+            content: [{ type: 'text', text: `Error: ${message}` }],
+            isError: true,
+          },
+        });
+      }
+      return;
+    }
+
+    log.warn('unknown_method', { method });
+    res.status(400).json({
+      jsonrpc: '2.0',
+      id,
+      error: { code: -32601, message: 'Method not found' },
+    });
+  });
+
+  app.get('/health', (_req, res) => {
+    res.json({ status: 'ok', service: 'foot-traffic-mcp', version: '1.0.0' });
+  });
+
+  const port = parseInt(process.env.PORT || '3000');
+  app.listen(port, '0.0.0.0', () => {
+    log.info('listening', { port, transport: 'http' });
+  });
 }
 
+// ── Entry point ──────────────────────────────────────────────────────────────
 
-// Main execution
-const transport = process.env.TRANSPORT || 'stdio';
 const mode = process.argv[2];
 
 if (mode === '--help' || mode === '-h') {
@@ -729,14 +674,16 @@ For more information: https://github.com/modelcontextprotocol
   process.exit(0);
 }
 
+const transport = process.env.TRANSPORT || 'stdio';
+
 if (transport === 'http') {
-  runHTTP().catch(error => {
-    console.error('Server error:', error);
+  runHTTP().catch(err => {
+    log.error('server/fatal', { message: String(err) });
     process.exit(1);
   });
 } else {
-  runStdio().catch(error => {
-    console.error('Server error:', error);
+  runStdio().catch(err => {
+    log.error('server/fatal', { message: String(err) });
     process.exit(1);
   });
 }
